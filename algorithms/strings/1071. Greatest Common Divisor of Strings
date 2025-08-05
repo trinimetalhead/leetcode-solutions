@@ -1,0 +1,70 @@
+'''
+t = 3
+s = 9 
+s = t + t + t
+9 = 3 + 3 + 3
+t must be the same thing
+                                             BUT IT MUST HAPPEN FOR THE BOTH
+                                             LETS ADD  S = 12  S = 9
+                                             S = 3 + 3 + 3 + 3
+                                              
+KEY WORDS: IF AND ONLY IF
+t:3
+s:11
+s = 3 + 3 + 3 + 2 => therefore 2 beakes the t + t 
+'''
+
+
+class Solution:
+    def gcdOfStrings(self, str1: str, str2: str) -> str:
+        
+        if str1 + str2 != str2 + str1:
+            return ""
+
+        max_length = gcd(len(str1), len (str2))  
+        return str1[:max_length]  
+
+
+'''
+STR1+STR2
+LEETCODE
+CODELEET
+
+
+
+input: uppercase strings
+output: the common divsor or empty string
+
+assumptions
+we are given uppercase letters only
+we won't be given an empty string
+patterns must match the order AB . BA .....NO
+
+cases:
+happy case
+input: str1 = "CCCBBBCCCBBB" str2= "CCCBBB"
+output: "CCCBBB"
+
+SAD CASE
+input: str1 = "YUYULI" str2= "LIYUYU"
+output: " "
+
+
+NEW PSEUDOCODE
+IF STR1 PLUS STR2 IS NOT EQUAL TO STR2 PLUS STR1
+   RETURN THE EMPTY STRING
+
+FIND THE LENGTHS OF STR1 AND STR2
+ RETURN THE SUBSTRING OF STR1 FROM 0 TO GCD LENGTH
+
+
+OLD PSEUDOCODE 
+
+IF T COULD DIVIDE STR1 AND STR2 WITH WITH NO REMAINDER
+IS THAT CORRECT 
+SO WE SEE WHAT COMES WHEN T DIVIDES S THE REPEATING GROUP 
+AND WE COMPAIR 1 REPEATING GROUP WITH ANOTHER 
+IF THEY ARE EQUAL WE OUTPUT THE REPEATING GROUP 
+IF NOT 
+OUTPUT AN EMPTY STRING
+'''
