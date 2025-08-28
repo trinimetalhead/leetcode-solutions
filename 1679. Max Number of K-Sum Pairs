@@ -1,0 +1,68 @@
+class Solution {
+public:
+    int maxOperations(vector<int>& nums, int k) {
+        sort (nums.begin(), nums.end());
+      int p1 = 0;
+      int p2 = nums.size() - 1;   
+      int sum = 0;
+      int count = 0;
+
+      while (p1 < p2){
+             sum = nums[p1] + nums[p2];
+             if (sum == k){
+                 count++;
+                  p1++;
+                  p2--;
+
+             } else if (sum > k){
+                p2--;
+             } else {
+                p1++;
+             }
+         }
+     
+      return count;
+    }
+};
+        
+/*
+Restate the problem:
+Initially I thought it was about finding "ONE PAIR" because of this line "In one operation, you can pick two numbers".
+
+Given 2 inputs nuns and k. You have to find the most amount of pairs in nums, when added up = k. The 1st pair you find cannot be used again, to == k..
+When there are no more pairs that == k , return the total amount of pairs that were removed from the array.
+
+input:int array [nums] , k -> determins what the 2 numbers totoal should be
+output: int of how many "pairs" were removed
+
+constraints:
+1 <= nums.length <= 105
+1 <= nums[i] <= 109
+1 <= k <= 109
+
+assumptions:
+the nums arr must have atleast ONE number
+the digits in the array wont be a 0
+^ same with k
+
+edge cases:
+input: nums = [1,1,1,1,1] , k = 9
+output: 0
+
+input: nums = [2] , k = 2
+output: 0
+
+input: nums = [7,1] , k =  1  // no pair will = 1 , since 1 <= nums[i]
+output: 0
+
+Happy Case:
+Input: nums = [1,2,3,4,5,6], k = 7
+Output: 3
+
+2 pointers
+sort the array 
+p1 will start at the front and p2 at the end , move the pointers depending on if the sum is <, ==, or >
+when sum == k , increase count to 1 and move both pointers   
+
+
+*/
