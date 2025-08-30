@@ -1,0 +1,46 @@
+class Solution {
+public:
+    bool isSubsequence(string s, string t) {
+
+        int ps = 0;
+        int pt = 0;
+
+        while(ps < s.length() && pt < t.length()){
+              if(s[ps] == t[pt]){
+                  ps++;
+              }
+              pt++;
+        }
+        if(ps == s.length()){
+            return true;
+       }else{
+         return false;
+       }
+    }
+};
+
+/*
+restate the problem 
+we are given 2 strings s and t. t is the original string and s is formed from t , where sone of the letters can be deleted or not. The letters that remain we have to see if they follow the same order that it is in t.
+
+input: string s -> which is derivied from t and is used to determine if its a subs of t, t -> the orgignal str
+output: boolean
+
+Constraints:
+0 <= s.length <= 100
+0 <= t.length <= 104
+s and t consist only of lowercase English letters.
+
+assumptions
+both inout string s and t can be empty
+we wont get uppercase letters
+
+pesucode
+1)2 pointers ps and pt, which will both start the the beginning od each string
+2)the pointer at s will only iterate unitl a match is found at t 
+3)ocnce the pointer at s == length of string s , return true
+4) 
+else we return false since ps didnt reach the end of str s
+
+
+*/
