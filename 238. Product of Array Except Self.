@@ -1,0 +1,81 @@
+class Solution {
+public:
+    vector<int> productExceptSelf(vector<int>& nums) {
+        int n = nums.size();
+        vector<int> left;   // store products of numbers to the left
+        vector<int> right;  // store products of numbers to the right
+        vector<int> answer(n); // final answer
+
+        int temp = 1;
+        // compute left products
+        for (int i = 1; i < n; i++) {
+            temp = nums[i - 1] * temp;
+            left.push_back(temp);
+        }
+
+        // handle first element for left array
+        left.insert(left.begin(), 1); // left[0] = 1
+
+        temp = 1;
+        // compute right products
+        for (int j = n - 2; j >= 0; j--) {
+            temp = nums[j + 1] * temp;
+            right.push_back(temp);
+        }
+        right.insert(right.begin(), 1); // right[n-1] = 1
+        reverse(right.begin(), right.end()); // align with indices
+
+        // multiply left and right
+        for (int i = 0; i < n; i++) {
+            answer[i] = left[i] * right[i];
+        }
+
+        return answer;
+    }
+};
+
+/*
+You are given an int array nums 
+the output, is the answer of the numbers in the nums array multiplied by each other
+but there is a catch
+What ever index you are at nums[i] , ingnore the digit associated with it and multiply the rest of the numbers in the nums array.
+
+input: array nums of type int 
+output: array of answers of type int -> the product of nums numbers
+
+Constraints:
+2 <= nums.length <= 105
+-30 <= nums[i] <= 30
+The input is generated such that answer[i] is guaranteed to fit in a 32-bit integer.
+
+Assumptions:
+The nums array won't be empty
+
+sad case
+input: nums = [0,0]
+output: [0,0]
+
+happy case
+Input: nums = [1,2,3,4]
+Output: [24,12,8,6]
+
+       1 2 3 4
+left     1 6 12
+right  2 
+
+have 2 pointers left and right 
+left ptr will start at the 2nd index
+right ptr will start at nums.size() - 2
+the left pointer will  == the number to the left
+after the 2nd iteration th number on the ......
+
+Start the left products loop at index 1 because the first number has no digit to its left.
+
+Use a running variable temp = 1 to store the product of all numbers to the left.
+
+At each index i, multiply nums[i - 1] * temp and store it in the left array.
+
+Do the same for right products starting from the second-to-last index, using a separate temp.
+
+Finally, multiply corresponding elements from left and right arrays to get the final answer.
+*/
