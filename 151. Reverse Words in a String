@@ -1,0 +1,57 @@
+class Solution {
+public:
+    string reverseWords(string s) {
+        stringstream ss(s);
+        string word;
+        vector<string> words;
+        
+        while (ss >> word) {   
+            words.push_back(word);
+        }
+        
+        reverse(words.begin(), words.end());
+        
+        string result;
+        for (int i = 0; i < words.size(); i++) {
+            result += words[i];
+            if (i != words.size() - 1) {   
+                result += " ";
+            }
+        }
+
+        return result;
+    }
+};
+/*
+You get a string s with words separated by spaces. It might have extra spaces at the start, end, or in between words. You need to reverse the order of the words so the last word comes first, and make sure
+Only one space between words
+No spaces at the start or end
+
+Input: string s -> a string that contains words separated by spaces 
+Output: a string -> where the words are reversed
+
+Input: s = "the sky is blue"
+Output: "blue is sky the"
+
+Constraints:
+1 <= s.length <= 104
+s contains English letters (upper-case and lower-case), digits, and spaces ' '.
+There is at least one word in s.
+
+Assumptions
+Multiple spaces between words should become a single space
+Input will always have at least one word, so no need to handle empty strings
+
+Sad case
+Input: s = "single"
+Output: "single"
+
+Input: s = "123 abc 45"
+Output: "45 abc 123"
+
+Take the input string s and split it into individual words.
+Store the words in a vector<string>.
+Reverse the order of the words in the vector.
+Combine the words back into a single string with exactly one space between each word.
+Return the resulting string.
+*/
