@@ -1,0 +1,61 @@
+class Solution:
+    def removeDuplicates(self, nums: List[int]) -> int:
+        slow = 0
+        fast = 1
+
+        while fast < len(nums): 
+              if nums[slow] == nums[fast]:
+                  fast = fast + 1
+              else: 
+                   slow = slow + 1
+                   nums[slow] = nums[fast]
+        return slow + 1
+
+'''
+Given an int array in "ascending order" expect repeated numbers
+keep track of only 1 of the repeated numbers
+return how much unique numbers their are
+
+Input: int [] nums
+Output: int
+
+Constraints:
+1 <= nums.length <= 3 * 104
+-100 <= nums[i] <= 100
+nums is sorted in non-decreasing order.
+
+Assumptions:
+We don't have to handle an empty array
+we will have to handle -ve inputs
+
+C Questions:
+Are we supposed to return 2 outputs or 1?
+
+Sad Cases:
+Input: nums = [1]
+Output: 1
+
+Input: nums = [=2,2]
+Output: 2
+
+Input: nums = [1,2,3,4]
+Output: 4
+
+Input: nums = [10,10,10]
+Output: 1
+
+Matching: 2 pointer
+Why: 1 pointer keeps track of the unique elements and the next iterates to 
+
+1. the slow ptr will start at index 0 and the fast at index 1
+2. if nums[slow] == nums[fast] 
+3. fast pointer will iterate until its != the nums[slow]
+4. slow ptr will iterate and the number at the fast ptr index will be replaced with the current "repeated" number where the slow ptr is
+5.return slow + 1
+
+ 1  1     2
+ s  fast
+
+ 1  1  2
+ s     fast
+'''
