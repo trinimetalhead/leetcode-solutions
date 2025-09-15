@@ -1,19 +1,19 @@
 class Solution:
     def reverseString(self, s: List[str]) -> None:
         
-          right = 0
-          left = len(s) - 1
+          left = 0
+          right = len(s) - 1
           temp = 0
 
-          while (right < left):
-                  temp = s[right]
-                  s[right] = s[left]
-                  s[left] = temp
+          while (left < right):
+                  temp = s[left]
+                  s[left] = s[right]
+                  s[right] = temp
 
-                  right = right + 1
-                  left = left - 1   
+                  left =  left + 1
+                 right = right - 1   
 
-       
+       // edit i confused left and right 
 """
         Do not return anything, modify s in-place instead.
         Restate the problem: you are given a word and have to make it backwards by using the 
@@ -40,8 +40,8 @@ class Solution:
         Why: the pointers will be great for sawpping char with eachother
 
         1. create 2 pointers 
-        left = end of the arr 
-        right = beginning
+        right = end of the arr 
+        left = beginning
         2. create a temp variable to hold the letter
         3. temp = r
         4  r = l  and l = temp
