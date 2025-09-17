@@ -1,0 +1,60 @@
+class Solution:
+    def twoSum(self, numbers: List[int], target: int) -> List[int]:
+        left = 0
+        right = len(numbers) - 1
+
+        while(left < right):
+              sum = numbers[left] + numbers[right]
+
+              if sum == target:
+                 return[left + 1, right + 1]
+
+              elif sum > target:
+                    right = right - 1
+
+              else: 
+                   left = left + 1
+        
+'''
+Always check for the target match first.
+Given a sorted array return 2 numbers that sums to the target.  The # at the 1st index must be < # @ 2nd index 
+The index starts at ONE not ZERO
+
+Input: int numbers [] , "sorted"
+Output: array location or index of the 2 pairs
+        returned as [small#,big#]
+
+Constraints:
+2 <= numbers.length <= 3 * 104
+-1000 <= numbers[i] <= 1000
+numbers is sorted in non-decreasing order.
+-1000 <= target <= 1000
+The tests are generated such that there is exactly one solution.
+
+Assumptions:
+we wont handle an empty array 
+we wont have one number in the array 
+Because a solution always exists, we don’t need to handle cases where no solution exists.
+Negative numbers and zeros are allowed because numbers[i] can be negative.
+
+Sad cases:
+Input: numbers = [2,7] , target = 9
+Output:[1,2]
+
+
+Mapping:2 pointers
+Why: they both scan throughout the arr to find the 2 pairs
+How they work tgt: 
+
+Plan:
+1.create 2 pointers
+2. right will start at the end of the arr , left at loc 0
+3. sum will be the total of the value were the 2 pointers are
+4. if sum > target , right --
+5. else left ++
+6. if sum == target , return [left + 1, right + 1]
+// the index starts at 1 and not 0
+
+
+
+'''
